@@ -13,42 +13,34 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #F9FAFB; /* Very light cool gray */
+  background-color: #F9FAFB;
   align-items: center;
-  /* Background image if desired, Trello uses one */
-  background-image: url('https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.518/static/media/trello-left.4f52d13c.svg'), url('https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.518/static/media/trello-right.3ee10416.svg');
-  background-repeat: no-repeat, no-repeat;
-  background-position: left bottom, right bottom;
-  background-size: 30%, 30%;
+  background-image: url('/assets/sign-in.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-
-
-/* Card */
 .login-card {
-  width: 400px !important; /* Standard Trello/Atlassian width */
+  width: 400px !important;
   max-width: 95vw !important;
   flex-shrink: 0;
   background: #FFFFFF;
-  /* Precise Atlassian Shadow */
   box-shadow: 0 0 0 1px rgba(9, 30, 66, 0.08), 0 2px 4px 1px rgba(9, 30, 66, 0.08);
   border-radius: 3px;
   margin-top: 48px;
-  padding: 32px 40px; /* Standard Trello padding (Top/Bottom 32, Sides 40) */
+  padding: 32px 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ... existing code ... */
-
-/* Input inside container */
 input.atlassian-input {
     -webkit-font-smoothing: antialiased;
-    flex: 1 1 auto; /* Fill available space properly */
-    width: auto; /* Let flex handle width */
-    min-width: 0; /* Allow shrinking if needed, prevents overflow */
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
     border: none !important;
     background: transparent !important;
     line-height: 20px;
@@ -63,26 +55,20 @@ input.atlassian-input {
     height: 100%;
 }
 
-/* ... existing code ... */
-
-/* Input Suffix / Action Buttons */
 .input-suffix {
     padding: 0 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    flex-shrink: 0; /* Critical: Do not shrink icon */
+    flex-shrink: 0;
 }
 
-/* ... existing code ... */
-
-/* Username Container matching Atlassian Field */
 .username-container {
     position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid #8590A2; /* Standard border 1px */
+    border: 1px solid #8590A2;
     border-radius: 3px;
     background-color: #FFFFFF;
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
@@ -90,28 +76,21 @@ input.atlassian-input {
     max-width: 100%;
     height: 40px;
     box-sizing: border-box;
-    overflow: hidden; /* Ensure content stays inside */
+    overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", sans-serif;
     word-wrap: break-word;
 }
 
-/* Focused state simulated - would need focus-within in modern css or JS class */
 .username-container:focus-within {
-    border: 2px solid #0C66E4; /* Brand blue */
-    padding: 0; /* Adjust padding if needed to prevent layout shift, but box-sizing handles it usually */
-    /* To prevent layout shift from 1px to 2px border, usually one manipulates padding or box-shadow.
-       Atlassian uses: border-color: selected; box-shadow: selected 0 0 0 1px?
-       But 2px solid is fine for simple imitation. */
+    border: 2px solid #0C66E4;
+    padding: 0;
 }
 
-/* Error State */
 .username-container.input-error {
-    border-color: #E2483D !important; /* #E2483D from snippet */
-    /* Snippet uses box-shadow inset to double the border width essentially */
+    border-color: #E2483D !important;
     box-shadow: inset 0 0 0 1px #E2483D;
 }
 
-/* Locked / Disabled state matching user snippet */
 .username-container.locked {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", sans-serif;
     position: relative;
@@ -119,7 +98,7 @@ input.atlassian-input {
     align-items: center;
     border: 1px solid #8590A2;
     border-radius: 3px;
-    background-color: rgba(9, 30, 66, 0.03); /* Locked bg */
+    background-color: rgba(9, 30, 66, 0.03);
     border-color: rgba(9, 30, 66, 0.03);
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     width: 100%;
@@ -129,33 +108,26 @@ input.atlassian-input {
     overflow: hidden;
     cursor: not-allowed;
     color: rgba(9, 30, 66, 0.31);
-    pointer-events: none; /* Block interaction on container */
+    pointer-events: none;
 }
-/* Unlock pointer events for the edit button */
+
 .username-container.locked .input-suffix {
     pointer-events: auto;
 }
 
 .username-container:hover:not(.locked) {
     background-color: #FAFBFC;
-    border-color: #758195; /* Darker gray on hover */
+    border-color: #758195;
 }
-
-/* ... */
-
-/* Cleaned up redundant input style */
 
 .username-container.locked input {
-    color: rgba(9, 30, 66, 0.31); /* Disabled text color */
-    -webkit-text-fill-color: rgba(9, 30, 66, 0.31); /* Safari fix */
+    color: rgba(9, 30, 66, 0.31);
+    -webkit-text-fill-color: rgba(9, 30, 66, 0.31);
 }
 
-/* ... existing code ... */
-
-/* Input styling resembling Atlassian/Trello */
 input[type="email"], input[type="password"], .atlassian-input {
   width: 100%;
-  padding: 8px 12px; /* Standard x padding is often 12px? Or 6-8px vertical. Let's use 8px 6px from memory or stick to standard 8px 12px for better spacing */
+  padding: 8px 12px;
   border: 2px solid #DFE1E6;
   border-radius: 3px;
   background-color: #FAFBFC;
@@ -164,7 +136,7 @@ input[type="email"], input[type="password"], .atlassian-input {
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
   outline: none;
   box-sizing: border-box;
-  height: 40px; /* Standard height */
+  height: 40px;
 }
 
 .logo-wrapper {
@@ -181,7 +153,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   text-align: center;
 }
 
-/* Form */
 .login-form {
   width: 100%;
 }
@@ -194,7 +165,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   margin-bottom: 16px;
 }
 
-/* Cleaned up duplicate styles */
 .username-container:hover {
     background-color: #EBECF0;
 }
@@ -212,14 +182,13 @@ input[type="email"], input[type="password"], .atlassian-input {
     fill: #DE350B;
 }
 
-/* Label Styles matching Atlassian */
 .input-group label {
     display: block;
-    color: #6B778C; /* Light gray for label */
+    color: #6B778C;
     font-size: 12px;
     font-weight: 600;
     line-height: 1.33333333;
-    padding-bottom: 4px; /* Space between label and input */
+    padding-bottom: 4px;
     margin-top: 0;
 }
 
@@ -228,7 +197,6 @@ input[type="email"], input[type="password"], .atlassian-input {
     padding-left: 2px;
 }
 
-/* Input Suffix / Action Buttons */
 .input-suffix {
     padding: 0 4px;
     display: flex;
@@ -248,7 +216,7 @@ input[type="email"], input[type="password"], .atlassian-input {
 }
 
 .input-action-btn:hover {
-    background-color: rgba(9, 30, 66, 0.08); /* N30 hover effect */
+    background-color: rgba(9, 30, 66, 0.08);
     color: #172B4D;
 }
 
@@ -260,7 +228,7 @@ input[type="email"], input[type="password"], .atlassian-input {
 .btn-icon {
     display: flex;
     align-items: center;
-    margin-right: 0; /* No text, so no margin needed */
+    margin-right: 0;
 }
 
 .btn-icon svg {
@@ -281,22 +249,20 @@ input[type="email"], input[type="password"], .atlassian-input {
     align-items: center;
     cursor: pointer;
     font-size: 14px;
-    color: #42526E; /* N800 essentially */
+    color: #42526E;
 }
 
-/* Custom checkbox styling could be done here, but default is acceptable for MVP.
-   However, let's make it neat. */
 .remember-me-label input[type="checkbox"] {
     margin: 0 8px 0 0;
     width: 16px;
     height: 16px;
     cursor: pointer;
-    accent-color: #0052CC; /* Modern browsers support this for color matching */
+    accent-color: #0052CC;
     vertical-align: middle;
 }
 
 .remember-me-label span {
-    line-height: 16px; /* Align text vertically with checkbox */
+    line-height: 16px;
 }
 
 .form-input {
@@ -304,8 +270,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   box-sizing: border-box;
 }
 
-/* Old input style removed, merged above */
-/* .btn-continue ... */
 .btn-continue {
   width: 100%;
   background-color: #0052CC;
@@ -328,7 +292,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   background-color: #0747A6;
 }
 
-/* Divider */
 .divider {
   width: 100%;
   text-align: center;
@@ -357,7 +320,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   text-transform: uppercase;
 }
 
-/* SSO Buttons */
 .sso-options {
   width: 100%;
   display: flex;
@@ -374,9 +336,7 @@ input[type="email"], input[type="password"], .atlassian-input {
   background-color: #FFFFFF;
   border: 1px solid #FFFFFF;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  /* Atlassian uses slightly different style usually, but this is a clean "Google auth" style */
-  /* Actually Atlassian SSO buttons are typically: Icon + Text, Bordered */
-  border: 1px solid #DFE1E6; /* Often just 1px logic in AtlasKit */
+  border: 1px solid #DFE1E6;
   border-bottom-color: #DFE1E6;
   border-radius: 3px;
   cursor: pointer;
@@ -397,7 +357,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   margin-right: 8px;
 }
 
-/* Links */
 .links {
   margin-top: 24px;
   font-size: 14px;
@@ -420,7 +379,6 @@ input[type="email"], input[type="password"], .atlassian-input {
   color: #42526E;
 }
 
-/* Footer */
 .footer {
   margin-top: auto;
   padding-bottom: 20px;
@@ -449,7 +407,6 @@ input[type="email"], input[type="password"], .atlassian-input {
     margin-top: 10px;
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   .login-card {
     box-shadow: none;

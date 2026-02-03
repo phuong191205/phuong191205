@@ -14,7 +14,7 @@
       <h1 class="title">Đăng nhập để tiếp tục</h1>
 
       <form class="login-form" (submit)="onSubmit($event)" novalidate>
-        <div class="input-group username-group-wrapper">
+        <div class="input-group">
             <label id="username-uid1-label" for="username-uid1" class="_11c8dcr7 _1e0c1o8l _syaz1gjq _k48pmoej _6rth1b66 _1pfhze3t">Email<span aria-hidden="true" title="required" class="_syaz1ick _ect41gqc _bozgv77o">*</span></label>
             <div class="username-container"
                  [class.input-error]="submitted && step === 'email' && email.invalid"
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <!-- Password Input Group -->
+
         <div class="input-group password-group-wrapper" *ngIf="step === 'password'">
             <label id="password-label" for="password" class="_11c8dcr7 _1e0c1o8l _syaz1gjq _k48pmoej _6rth1b66 _1pfhze3t">Mật khẩu<span aria-hidden="true" title="required" class="_syaz1ick _ect41gqc _bozgv77o">*</span></label>
             <div class="username-container" [class.input-error]="submitted && password.invalid">
@@ -115,8 +115,7 @@
                 <path fill="#36C5F0" d="M67.7 29.8c6 0 10.8-4.9 10.8-10.8s-4.9-10.8-10.8-10.8c-6 0-10.8 4.9-10.8 10.8v10.8h10.8zM67.7 46c0 6-4.9 10.8-10.8 10.8s-10.8-4.9-10.8-10.8V19.4c0-6 4.9-10.8 10.8-10.8S67.7 13.5 67.7 19.4V46z"/>
                 <path fill="#2EB67D" d="M98.6 67.7c6 0 10.8-4.9 10.8-10.8s-4.9-10.8-10.8-10.8h-27v21.6c0 6 4.9 10.8 10.8 10.8zm0 16.2c6 0 10.8-4.9 10.8-10.8s-4.9-10.8-10.8-10.8h-10.8v10.8c0 6 4.9 10.8 10.8 10.8z"/>
                 <path fill="#ECB22E" d="M60.4 98.6c0 6-4.9 10.8-10.8 10.8s-10.8-4.9-10.8-10.8v-27h21.6c6 0 10.8 4.9 10.8 10.8zm-16.2 0c0 6-4.9 10.8-10.8 10.8s-10.8-4.9-10.8-10.8v-10.8h10.8v10.8z"/>
-                <!-- Full slack logo involves 4 parts, adding simplified standard slack parts. Wait, standard slack logo has 4 sections.
-                     Let's use a simplified correct standard path for Slack. -->
+
                 <g>
                      <path fill="#36C5F0" d="M44.5 16.5a11 11 0 1 0-11 11h11v-11zm15.5 11a11 11 0 1 0 11-11h-11v11z"/>
                      <path fill="#2EB67D" d="M84.5 16.5a11 11 0 1 0 11 11v-11h-11zm0 15.5a11 11 0 1 0-11 11v-11h11z"/>

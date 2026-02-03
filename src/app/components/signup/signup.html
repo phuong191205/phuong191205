@@ -14,13 +14,13 @@
       <h1 class="title">Đăng ký để tiếp tục</h1>
 
       <form class="login-form" (submit)="onSubmit($event)" novalidate>
-        <div class="input-group username-group-wrapper">
+        <div class="input-group">
             <label id="username-uid1-label" for="username-uid1" class="_11c8dcr7 _1e0c1o8l _syaz1gjq _k48pmoej _6rth1b66 _1pfhze3t">Email<span aria-hidden="true" title="required" class="_syaz1ick _ect41gqc _bozgv77o">*</span></label>
             <div class="username-container"
                  [class.input-error]="submitted && email.invalid"
                  data-testid="username-container">
                 <input [formControl]="email"
-                       aria-describedby=" " aria-labelledby="username-uid1-label" id="username-uid1" autocomplete="email" type="email" name="username" placeholder="Nhập địa chỉ email của bạn" class="atlassian-input">
+                       aria-describedby=" " aria-labelledby="username-uid1-label" id="username-uid1" autocomplete="email" type="text" inputmode="email" name="username" placeholder="Nhập địa chỉ email của bạn" class="atlassian-input">
             </div>
 
             <div data-testid="form-text-field--input-invalid-error-message-field--idf-testid" id="username-uid1-error" class="error-message _zulp12x7 _11c8dcr7 _1e0c1txw _1bah1q9y _1pfh1b66 _syaze6sf" *ngIf="submitted && email.invalid">
@@ -31,7 +31,30 @@
             </div>
         </div>
 
-        <div class="terms-text" style="font-size: 12px; color: #5e6c84; margin-bottom: 20px; line-height: 1.5;">
+        <div class="input-group password-group-wrapper">
+            <label id="password-label" for="password" class="_11c8dcr7 _1e0c1o8l _syaz1gjq _k48pmoej _6rth1b66 _1pfhze3t">Mật khẩu<span aria-hidden="true" title="required" class="_syaz1ick _ect41gqc _bozgv77o">*</span></label>
+            <div class="username-container" [class.input-error]="submitted && password.invalid">
+                <input [formControl]="password"
+                       [type]="showPassword ? 'text' : 'password'"
+                       id="password" placeholder="Nhập mật khẩu" class="atlassian-input">
+
+                <div class="input-suffix">
+                    <button type="button" class="input-action-btn" aria-label="Toggle password visibility" (click)="togglePasswordVisibility()">
+                        <span data-vc="icon-undefined" aria-hidden="true" class="_1e0c1o8l _1o9zidpf _vyfuvuon _vwz4kb7n _1szv15vq _1tly15vq _rzyw1osq _17jb1osq _1ksvoz0e _3se1x1jp _re2rglyw _1veoyfq0 _1kg81r31 _jcxd1r8n _gq0g1onz _1trkwc43" style="--icon-primary-color: currentColor; display: flex;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentcolor" fill-rule="evenodd"><path d="M12 18c-4.536 0-7.999-4.26-7.999-6 0-2.001 3.459-6 8-6 4.376 0 7.998 3.973 7.998 6 0 1.74-3.462 6-7.998 6m0-14C6.48 4 2 8.841 2 12c0 3.086 4.576 8 10 8 5.423 0 10-4.914 10-8 0-3.159-4.48-8-10-8"></path><path d="M11.978 13.984c-1.104 0-2-.897-2-2s.896-2 2-2c1.103 0 2 .897 2 2s-.897 2-2 2m0-6c-2.206 0-4 1.794-4 4s1.793 4 4 4 4-1.794 4-4-1.794-4-4-4"></path></g></svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="error-message" *ngIf="submitted && password.invalid">
+                 <span class="_1e0c1txw _4t3i7vkz _4cvr1h6o">
+                <span data-vc="icon-undefined" role="img" aria-label="error" class="_1e0c1o8l _1o9zidpf _vyfuvuon _vwz4kb7n _1szv15vq _1tly15vq _rzyw1osq _17jb1osq _1ksvoz0e _3se1x1jp _re2rglyw _1veoyfq0 _1kg81r31 _jcxd1r8n _gq0g1onz _1trkwc43 _1bsb7vkz _4t3i7vkz _5fdi7vkz _zbji7vkz" style="--icon-primary-color: currentColor; margin: 0px -2px 0px 0px;"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill-rule="evenodd"><path fill="currentcolor" d="M13.416 4.417a2 2 0 0 0-2.832 0l-6.168 6.167a2 2 0 0 0 0 2.833l6.168 6.167a2 2 0 0 0 2.832 0l6.168-6.167a2 2 0 0 0 0-2.833z"></path><path fill="inherit" d="M12 14a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1m0 3a1 1 0 0 1 0-2 1 1 0 0 1 0 2"></path></g></svg></span>
+                </span>
+                Nhập mật khẩu (tối thiểu 8 ký tự)
+            </div>
+        </div>
+
+        <div class="terms-text" style="font-size: 12px; color: #5e6c84; margin-bottom: 24px; line-height: 1.5;">
             Khi đăng ký, tôi chấp nhận <a href="#" style="color: #0052cc; text-decoration: none;">Điều khoản dịch vụ đám mây</a> của Atlassian và xác nhận <a href="#" style="color: #0052cc; text-decoration: none;">Chính sách quyền riêng tư</a>.
         </div>
 
