@@ -75,8 +75,8 @@
             </label>
         </div>
 
-        <button type="submit" class="btn-continue">
-          {{ step === 'email' ? 'Tiếp tục' : 'Đăng nhập' }}
+        <button type="submit" class="btn-continue" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Đang đăng nhập...' : (step === 'email' ? 'Tiếp tục' : 'Đăng nhập') }}
         </button>
       </form>
 

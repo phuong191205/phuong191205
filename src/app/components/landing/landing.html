@@ -29,9 +29,9 @@
                 <h1>Trello tập hợp tất cả nhiệm vụ, nhóm và công cụ của bạn lại với nhau</h1>
                 <p>Giữ mọi thứ ở cùng một nơi—ngay cả khi nhóm của bạn không ở cùng nhau.</p>
 
-                <form class="signup-form">
-                    <input type="email" placeholder="Email" class="email-input">
-                    <a routerLink="/signup" class="btn-primary" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">Đăng ký - hoàn toàn miễn phí!</a>
+                <form class="signup-form" (submit)="$event.preventDefault(); navigateToSignup()">
+                    <input type="email" placeholder="Email" class="email-input" [(ngModel)]="email" name="email">
+                    <button type="submit" class="btn-primary" style="text-decoration: none; display: flex; justify-content: center; align-items: center; border: none; font-size: 1rem; cursor: pointer;">Đăng ký - hoàn toàn miễn phí!</button>
                 </form>
 
                 <div class="video-link">

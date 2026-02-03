@@ -58,8 +58,8 @@
             Khi đăng ký, tôi chấp nhận <a href="#" style="color: #0052cc; text-decoration: none;">Điều khoản dịch vụ đám mây</a> của Atlassian và xác nhận <a href="#" style="color: #0052cc; text-decoration: none;">Chính sách quyền riêng tư</a>.
         </div>
 
-        <button type="submit" class="btn-continue">
-          Đăng ký
+        <button type="submit" class="btn-continue" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Đang xử lý...' : 'Đăng ký' }}
         </button>
       </form>
 
