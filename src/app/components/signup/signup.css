@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F9FAFB; /* Very light cool gray */
+  align-items: center;
+  /* Background image if desired, Trello uses one */
+  background-image: url('https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.518/static/media/trello-left.4f52d13c.svg'), url('https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.518/static/media/trello-right.3ee10416.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right bottom;
+  background-size: 30%, 30%;
+}
+
+
+
+/* Card */
+.login-card {
+  width: 400px !important; /* Standard Trello/Atlassian width */
+  max-width: 95vw !important;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  /* Precise Atlassian Shadow */
+  box-shadow: 0 0 0 1px rgba(9, 30, 66, 0.08), 0 2px 4px 1px rgba(9, 30, 66, 0.08);
+  border-radius: 3px;
+  margin-top: 48px;
+  padding: 32px 40px; /* Standard Trello padding (Top/Bottom 32, Sides 40) */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ... existing code ... */
+
+/* Input inside container */
+input.atlassian-input {
+    -webkit-font-smoothing: antialiased;
+    flex: 1 1 auto; /* Fill available space properly */
+    width: auto; /* Let flex handle width */
+    min-width: 0; /* Allow shrinking if needed, prevents overflow */
+    border: none !important;
+    background: transparent !important;
+    line-height: 20px;
+    box-shadow: none !important;
+    padding: 8px 12px;
+    border-radius: 3px;
+    color: #172B4D;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+/* ... existing code ... */
+
+/* Input Suffix / Action Buttons */
+.input-suffix {
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-shrink: 0; /* Critical: Do not shrink icon */
+}
+
+/* ... existing code ... */
+
+/* Username Container matching Atlassian Field */
+.username-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #8590A2; /* Standard border 1px */
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    width: 100%;
+    max-width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    overflow: hidden; /* Ensure content stays inside */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", sans-serif;
+    word-wrap: break-word;
+}
+
+/* Focused state simulated - would need focus-within in modern css or JS class */
+.username-container:focus-within {
+    border: 2px solid #0C66E4; /* Brand blue */
+    padding: 0; /* Adjust padding if needed to prevent layout shift, but box-sizing handles it usually */
+    /* To prevent layout shift from 1px to 2px border, usually one manipulates padding or box-shadow.
+       Atlassian uses: border-color: selected; box-shadow: selected 0 0 0 1px?
+       But 2px solid is fine for simple imitation. */
+}
+
+/* Error State */
+.username-container.input-error {
+    border-color: #E2483D !important; /* #E2483D from snippet */
+    /* Snippet uses box-shadow inset to double the border width essentially */
+    box-shadow: inset 0 0 0 1px #E2483D;
+}
+
+/* Locked / Disabled state matching user snippet */
+.username-container.locked {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", sans-serif;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #8590A2;
+    border-radius: 3px;
+    background-color: rgba(9, 30, 66, 0.03); /* Locked bg */
+    border-color: rgba(9, 30, 66, 0.03);
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    width: 100%;
+    max-width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: not-allowed;
+    color: rgba(9, 30, 66, 0.31);
+    pointer-events: none; /* Block interaction on container */
+}
+/* Unlock pointer events for the edit button */
+.username-container.locked .input-suffix {
+    pointer-events: auto;
+}
+
+.username-container:hover:not(.locked) {
+    background-color: #FAFBFC;
+    border-color: #758195; /* Darker gray on hover */
+}
+
+/* ... */
+
+/* Cleaned up redundant input style */
+
+.username-container.locked input {
+    color: rgba(9, 30, 66, 0.31); /* Disabled text color */
+    -webkit-text-fill-color: rgba(9, 30, 66, 0.31); /* Safari fix */
+}
+
+/* ... existing code ... */
+
+/* Input styling resembling Atlassian/Trello */
+input[type="email"], input[type="password"], .atlassian-input {
+  width: 100%;
+  padding: 8px 12px; /* Standard x padding is often 12px? Or 6-8px vertical. Let's use 8px 6px from memory or stick to standard 8px 12px for better spacing */
+  border: 2px solid #DFE1E6;
+  border-radius: 3px;
+  background-color: #FAFBFC;
+  color: #172B4D;
+  font-size: 14px;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+  height: 40px; /* Standard height */
+}
+
+.logo-wrapper {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.title {
+  color: #172B4D;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Form */
+.login-form {
+  width: 100%;
+}
+
+.username-group-wrapper {
+    margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+/* Cleaned up duplicate styles */
+.username-container:hover {
+    background-color: #EBECF0;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #DE350B;
+    line-height: 1.3333;
+}
+.error-message svg {
+    margin-right: 4px;
+    fill: #DE350B;
+}
+
+/* Label Styles matching Atlassian */
+.input-group label {
+    display: block;
+    color: #6B778C; /* Light gray for label */
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.33333333;
+    padding-bottom: 4px; /* Space between label and input */
+    margin-top: 0;
+}
+
+.input-group label span[title="required"] {
+    color: #DE350B;
+    padding-left: 2px;
+}
+
+/* Input Suffix / Action Buttons */
+.input-suffix {
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.input-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #42526E;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.input-action-btn:hover {
+    background-color: rgba(9, 30, 66, 0.08); /* N30 hover effect */
+    color: #172B4D;
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 0; /* No text, so no margin needed */
+}
+
+.btn-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.remember-me-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+
+.remember-me-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #42526E; /* N800 essentially */
+}
+
+/* Custom checkbox styling could be done here, but default is acceptable for MVP.
+   However, let's make it neat. */
+.remember-me-label input[type="checkbox"] {
+    margin: 0 8px 0 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #0052CC; /* Modern browsers support this for color matching */
+    vertical-align: middle;
+}
+
+.remember-me-label span {
+    line-height: 16px; /* Align text vertically with checkbox */
+}
+
+.form-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Old input style removed, merged above */
+/* .btn-continue ... */
+.btn-continue {
+  width: 100%;
+  background-color: #0052CC;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 40px;
+  transition: background-color 0.1s ease-out;
+}
+
+.btn-continue:hover {
+  background-color: #0065FF;
+}
+
+.btn-continue:active {
+  background-color: #0747A6;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+  font-size: 12px;
+  color: #5E6C84;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #DFE1E6;
+  z-index: 1;
+}
+
+.divider span {
+  background-color: #FFFFFF;
+  padding: 0 10px;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+/* SSO Buttons */
+.sso-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-sso {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  /* Atlassian uses slightly different style usually, but this is a clean "Google auth" style */
+  /* Actually Atlassian SSO buttons are typically: Icon + Text, Bordered */
+  border: 1px solid #DFE1E6; /* Often just 1px logic in AtlasKit */
+  border-bottom-color: #DFE1E6;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #42526E;
+  transition: background-color 0.1s;
+}
+
+.btn-sso:hover {
+  background-color: #F4F5F7;
+}
+
+.btn-sso img {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+/* Links */
+.links {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #0052CC;
+  text-align: center;
+  width: 100%;
+}
+
+.links a {
+  text-decoration: none;
+  color: #0052CC;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.dot {
+  margin: 0 8px;
+  color: #42526E;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-links {
+  font-size: 12px;
+  color: #42526E;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #42526E;
+    text-decoration: none;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.atlassian-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    box-shadow: none;
+    background: transparent;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .login-page {
+      background-color: #FFFFFF;
+  }
+}
